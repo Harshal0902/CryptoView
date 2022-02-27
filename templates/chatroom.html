@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Post NFT | CryptoView</title>
+    <title>Chatroom | CryptoView</title>
     <link rel="stylesheet" href="style.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -504,51 +504,7 @@
         </ul>
     </div>
     <section>
-        <form action="" method="post" id="fileform" enctype="multipart/form-data">
-
-            <div class="container">
-                <div class="wrapper">
-                    <div class="image">
-                        <img src="" alt="">
-                    </div>
-                    <div class="content">
-                        <div class="icon">
-                            <i class="fas fa-cloud-upload-alt"></i>
-                        </div>
-                        <div class="text">
-                            No file chosen, yet!
-                        </div>
-                    </div>
-                    <div id="cancel-btn">
-                        <i class="fas fa-times"></i>
-                    </div>
-                    <div class="file-name">
-                        File name here
-                    </div>
-                </div>
-                <div onclick="defaultBtnActive()" id="custom-btn"
-                    style="display: flex; align-items: center; justify-content: center;">Choose a NFT file</div>
-                <input id="default-btn" type="file" hidden name="myfile">
-                <input type="text" placeholder="Price" name="price">
-                <button type="submit"
-                    style="margin-top: 28px; margin-left: 200px; border: none; background-color: red; padding: 10px; color: white; border-radius: 10px; cursor: pointer;">Upload
-                    you NFT</button>
-
-            </div>
-        </form>
-        {% if filename %}
-        <div class="modal-container" id="model-container">
-            <input id="modal-toggle" type="checkbox">
-            <div class="modal-backdrop">
-                <div class="modal-content">
-                    <label class="modal-close" for="modal-toggle" onclick="hidemodel()">x</label>
-                    <h2>Posted your NFT</h2>
-                    <br>
-                    <label class="modal-close button" for="modal-toggle"></label>
-                </div>
-            </div>
-        </div>
-        {% endif %}
+        <iframe src="http://localhost:54671/" style="height:100vh; width:90vw; margin-left: 50px;" title="Chatroom"></iframe>
     </section>
 
     <script>
