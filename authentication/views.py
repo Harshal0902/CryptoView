@@ -50,10 +50,10 @@ def signin(request):
             return redirect('/')
         else:
             form = AuthenticationForm(request.POST)
-            return render(request,'signin.html',{'form':form})
+            return render(request,'login.html',{'form':form})
     else:
         form = AuthenticationForm()
-        return render(request,'signin.html',{'form':form})
+        return render(request,'login.html',{'form':form})
 
 
 def signout(request):

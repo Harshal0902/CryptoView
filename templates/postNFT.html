@@ -522,13 +522,14 @@
                 <div onclick="defaultBtnActive()" id="custom-btn"
                     style="display: flex; align-items: center; justify-content: center;">Choose a NFT file</div>
                 <input id="default-btn" type="file" hidden name="myfile">
-
+                <input type="text" placeholder="Price" name="price">
                 <button type="submit"
                     style="margin-top: 28px; margin-left: 200px; border: none; background-color: red; padding: 10px; color: white; border-radius: 10px; cursor: pointer;">Upload
                     you NFT</button>
 
             </div>
         </form>
+        {% if filename %}
         <div class="modal-container" id="model-container">
             <input id="modal-toggle" type="checkbox">
             <div class="modal-backdrop">
@@ -540,6 +541,7 @@
                 </div>
             </div>
         </div>
+        {% endif %}
     </section>
 
     <script>

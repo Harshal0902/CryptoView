@@ -5,12 +5,11 @@ from main.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('placeorder', main),
-    path('calories', cals),
-    path('exercise', exercise),
-    path('ingredients', ingredient),
-    path('recepies', recepies),
-    path('addfood', addfoods),
-    path('home', home),
-    path('', include('auth0login.urls'))
+    path('', home),
+    path('index', index),
+    path('layout', layout),
+    path('post', postNFT),
+    path('userHome', userHome),
+    path('userOrder', userOrder,name='orders'),
+    path('', include('authentication.urls'))
 ]
