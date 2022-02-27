@@ -45,3 +45,8 @@ def userOrder(request):
     temp = nft.objects.all()
     return render(request, 'userOrder.html',{'nfts':temp})
 
+def chatroom(request):
+    return render(request, 'chatroom.html')
+
+
+
