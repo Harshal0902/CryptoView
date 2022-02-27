@@ -11,5 +11,6 @@ urlpatterns = [
     path('post', postNFT),
     path('userHome', userHome),
     path('userOrder', userOrder,name='orders'),
+    path('chatroom', chatroom),
     path('', include('authentication.urls'))
 ]
