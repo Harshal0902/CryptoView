@@ -3,11 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Check NFT's | CryptoView</title>
+    <title>Chatroom | CryptoView</title>
     <link rel="stylesheet" href="style.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
 </head>
 
@@ -233,77 +234,238 @@
             }
         }
 
-
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        section {
+            width: 100vw;
+            display: grid;
+            place-items: center;
         }
 
-        section {
+        .container {
+            padding-top: 80px;
+            height: 350px;
+            width: 430px;
+            position: relative;
+        }
+
+        .container .wrapper {
+            position: relative;
+            height: 300px;
+            width: 100%;
+            border-radius: 10px;
+            background: #fff;
+            border: 2px dashed #c2cdda;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .wrapper.active {
+            border: none;
+        }
+
+        .wrapper .image {
+            position: absolute;
+            height: 100%;
             width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 10px 0;
         }
 
-        .main {
-
-            margin: 2%;
-        }
-
-        .card {
-            width: 20%;
-            display: inline-block;
-            box-shadow: 2px 2px 20px black;
-            border-radius: 5px;
-            margin: 2%;
-        }
-
-        .image img {
+        .wrapper img {
+            height: 100%;
             width: 100%;
-            border-top-right-radius: 5px;
-            border-top-left-radius: 5px;
-
-
-
+            object-fit: cover;
         }
 
-        .title {
-
-            text-align: center;
-            padding: 10px;
-
+        .wrapper .icon {
+            font-size: 100px;
+            color: #9658fe;
         }
 
-        h1 {
+        .wrapper .text {
             font-size: 20px;
+            font-weight: 500;
+            color: #5B5B7B;
         }
 
-        .des {
-            padding: 3px;
-            text-align: center;
-
-            padding-top: 10px;
-            border-bottom-right-radius: 5px;
-            border-bottom-left-radius: 5px;
-        }
-
-        button {
-            margin-top: 40px;
-            margin-bottom: 10px;
-            background-color: white;
-            border: 1px solid black;
-            border-radius: 5px;
-            padding: 10px;
-        }
-
-        button:hover {
-            background-color: black;
-            color: white;
-            transition: .5s;
+        .wrapper #cancel-btn i {
+            position: absolute;
+            font-size: 20px;
+            right: 15px;
+            top: 15px;
+            color: #9658fe;
             cursor: pointer;
+            display: none;
+        }
+
+        .wrapper.active:hover #cancel-btn i {
+            display: block;
+        }
+
+        .wrapper #cancel-btn i:hover {
+            color: #e74c3c;
+        }
+
+        .wrapper .file-name {
+            position: absolute;
+            bottom: 0px;
+            width: 100%;
+            padding: 8px 0;
+            font-size: 18px;
+            color: #fff;
+            display: none;
+            background: linear-gradient(135deg, #3a8ffe 0%, #9658fe 100%);
+        }
+
+        .wrapper.active:hover .file-name {
+            display: block;
+        }
+
+        .container #custom-btn {
+            margin-top: 30px;
+            display: block;
+            width: 100%;
+            height: 50px;
+            border: none;
+            outline: none;
+            border-radius: 25px;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            background: linear-gradient(135deg, #3a8ffe 0%, #9658fe 100%);
+        }
+
+        #result {
+            padding: 20px;
+            display: grid;
+            place-items: center;
+        }
+
+        .modal-container {
+            margin: 0 auto;
+            padding-top: 60px;
+            position: relative;
+            width: 160px;
+        }
+
+        .modal-container button {
+            display: block;
+            margin: 0 auto;
+            color: #fff;
+            width: 160px;
+            height: 50px;
+            line-height: 50px;
+            background: #446CB3;
+            font-size: 22px;
+            border: 0;
+            border-radius: 3px;
+            box-shadow: 0 5px 5px -5px #333;
+            transition: background 0.3s ease-in;
+        }
+
+        .modal-container .modal-backdrop {
+            height: 0;
+            width: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: opacity 0.2s ease-in;
+        }
+
+        .modal-container #modal-toggle {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .modal-container #modal-toggle {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 9;
+            opacity: 0;
+        }
+
+        .modal-container #modal-toggle~.modal-backdrop {
+            background-color: rgba(0, 0, 0, 0.6);
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 9;
+            pointer-events: none;
+            opacity: 1;
+        }
+
+        .modal-container #modal-toggle~.modal-backdrop .modal-content {
+            background-color: #fff;
+            max-width: 400px;
+            width: 100%;
+            height: 280px;
+            padding: 10px 30px;
+            position: absolute;
+            left: calc(50% - 200px);
+            top: 12%;
+            border-radius: 4px;
+            z-index: 999;
+            pointer-events: auto;
+            cursor: auto;
+            box-shadow: 0 3px 7px rgba(0, 0, 0, 0.6);
+        }
+
+        @media (max-width: 400px) {
+
+            .modal-container #modal-toggle~.modal-backdrop .modal-content {
+                left: 0;
+            }
+        }
+
+        .modal-container #modal-toggle:checked~.modal-backdrop .modal-content .modal-close {
+            color: #666;
+            position: absolute;
+            right: 2px;
+            top: 0;
+            padding-top: 7px;
+            background: #fff;
+            font-size: 16px;
+            width: 25px;
+            height: 28px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .modal-container #modal-toggle:checked~.modal-backdrop .modal-content .modal-close.button {
+            top: initial;
+            bottom: 20px;
+            right: 20px;
+            background: #4CAF50;
+            color: #fff;
+            width: 50px;
+            border-radius: 2px;
+            font-size: 14px;
+            font-weight: normal;
+        }
+
+        .modal-container #modal-toggle:checked~.modal-backdrop .modal-content .modal-close.button:hover {
+            color: #fff;
+            background: #1E824C;
+        }
+
+        .modal-container #modal-toggle:checked~.modal-backdrop .modal-content .modal-close:hover {
+            color: #333;
         }
     </style>
     <div class="sidebar">
@@ -320,11 +482,18 @@
                 <span class="tooltip">Dashboard</span>
             </li>
             <li>
-                <a href="/userOrder">
-                    <i class='bx bxs-palette' ></i>
-                    <span class="links_name">Buy NFT</span>
+                <a href="/postNFT">
+                    <i class='bx bxs-palette'></i>
+                    <span class="links_name">Upload NFT</span>
                 </a>
-                <span class="tooltip">Buy NFT</span>
+                <span class="tooltip">Upload NFT</span>
+            </li>
+            <li>
+                <a href="./chatroom.html">
+                    <box-icon type='solid' name='message-rounded-dots'></box-icon>
+                    <span class="links_name">Chatroom</span>
+                </a>
+                <span class="tooltip">Chatroom</span>
             </li>
 
             <li class="profile">
@@ -334,90 +503,51 @@
             </li>
         </ul>
     </div>
-    <section class="home-section">
-        <div class="main">
-
-
-            <div class="card">
-                <div class="image">
-                    <img
-                        src="https://cdn.vox-cdn.com/thumbor/-DcvNAdE5L9I10i37nylggm6F00=/1400x788/filters:format(png)/cdn.vox-cdn.com/uploads/chorus_asset/file/22341171/Screen_Shot_2021_03_02_at_3.21.50_PM.png">
-                </div>
-                <div class="title">
-                    <h1>Made by: John Doe</h1>
-                </div>
-                <div class="des">
-                    <button>Purchase NFT</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="image">
-                    <img
-                        src="https://i.guim.co.uk/img/media/3c90fbf9666d4e73be1122eb33afed235db41b1f/0_0_5000_3000/master/5000.jpg?width=1200&quality=85&auto=format&fit=max&s=0c4de651644de5fe939d8dbd6b14ba66">
-                </div>
-                <div class="title">
-                    <h1>Made by: Olive Yew</h1>
-                </div>
-                <div class="des">
-                    <button>Purchase NFT</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="image">
-                    <img
-                        src="https://www.cnet.com/a/img/G6vKiQdvVTqsc8NtYFAa_6Sh5o0=/940x0/2021/03/22/d48c45f6-e4d7-4281-98bb-c6aff252ef98/nmjgg.jpg">
-                </div>
-                <div class="title">
-                    <h1>Made by: Aida Bugg</h1>
-                </div>
-                <div class="des">
-                    <button>Purchase NFT</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="image">
-                    <img src="https://hbr.org/resources/images/article_assets/2021/11/Nov21_10_VinnieHager.jpg">
-                </div>
-                <div class="title">
-                    <h1>Made by: Teri Dactyl</h1>
-                </div>
-                <div class="des">
-                    <button>Purchase NFT</button>
-                </div>
-            </div>
-            <li>
-                <a href="./chatroom.html">
-                    <box-icon type='solid' name='message-rounded-dots'></box-icon>
-                    <span class="links_name">Chatroom</span>
-                </a>
-                <span class="tooltip">Chatroom</span>
-            </li>
-
-            <div class="card">
-                <div class="image">
-                    <img
-                        src="https://api.time.com/wp-content/uploads/2021/03/nft-art-4.jpg">
-                </div>
-                <div class="title">
-                    <h1>Made by: Peg Legge</h1>
-                </div>
-                <div class="des">
-                    <button>Purchase NFT</button>
-                </div>
-            </div>
-
-
-        </div>
+    <section>
+        <iframe src="http://localhost:54671/" style="height:100vh; width:90vw; margin-left: 50px;" title="Chatroom"></iframe>
     </section>
+
+    <script>
+        const wrapper = document.querySelector(".wrapper");
+        const fileName = document.querySelector(".file-name");
+        const defaultBtn = document.querySelector("#default-btn");
+        const customBtn = document.querySelector("#custom-btn");
+        const cancelBtn = document.querySelector("#cancel-btn i");
+        const img = document.querySelector("img");
+        let regExp = /[0-9a-zA-Z\^\&\'\@\{\}\[\]\,\$\=\!\-\#\(\)\.\%\+\~\_ ]+$/;
+        defaultBtn.click();
+        function defaultBtnActive() {
+            defaultBtn.click();
+        }
+        function hidemodel() {
+            document.getElementById('model-container').style.display = 'none';
+        }
+        defaultBtn.addEventListener("change", function () {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function () {
+                    const result = reader.result;
+                    img.src = result;
+                    wrapper.classList.add("active");
+                }
+                cancelBtn.addEventListener("click", function () {
+                    img.src = "";
+                    wrapper.classList.remove("active");
+                })
+                reader.readAsDataURL(file);
+            }
+            if (this.value) {
+                let valueStore = this.value.match(regExp);
+                fileName.textContent = valueStore;
+            }
+        });
+    </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2.2.1/src/js.cookie.min.js"></script>
 
     <script>
-
         function imgsplit() {
             $("#splitform").append("<input type = 'file' name = 'myfile' id='myfile'>")
             $("#mos").val('1');
