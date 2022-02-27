@@ -337,7 +337,23 @@
     <section class="home-section">
         <div class="main">
 
-
+            {% for i in nfts %}
+            <div class="card">
+                <div class="image">
+                    <img
+                        src="/media/nft/{{ i.image }}">
+                </div>
+                <div class="title">
+                    <h1>Made by: {{ i.user.username }}</h1>
+                </div>
+                <div class="price">
+                    <p>price: {{ i.price }}</p>
+                </div>
+                <div class="des">
+                    <button>Purchase NFT</button>
+                </div>
+            </div>
+            {% endfor %}
             <div class="card">
                 <div class="image">
                     <img
@@ -345,6 +361,9 @@
                 </div>
                 <div class="title">
                     <h1>Made by: John Doe</h1>
+                </div>
+                <div class="price">
+                    <p>price: {{ i.price }}</p>
                 </div>
                 <div class="des">
                     <button>Purchase NFT</button>
